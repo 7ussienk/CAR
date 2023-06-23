@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_Car_tree" model="ir.ui.view">
+            <field name="name">model_car_store.tree</field>
+            <field name="model">model_car_store</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Car">
+                    <field name="name" />
+                    <field name="year" />
+                    <field name="Price" />
+                    <field name="Count" />
+                    <field name="Color" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_Car_form" model="ir.ui.view">
+            <field name="name">model_car_store.form</field>
+            <field name="model">model_car_store</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Car">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="name" required="1" placeholder="Car Name" /></td>
+                                        <td style="padding-right:10px;"><field name="year" placeholder="Release Date" /></td>
+                                        <td style="padding-right:10px;"><field name="Price" placeholder="Price" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="personal_information"
+                                string="Personal Information">
+                                <group col="4" colspan="4"
+                                    name="personal_detail">
+                                    <field name="Color" />
+                                    <field name="Price" />
+                                    <field name="year" />
+                                    <field name="Color" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_Cars">
+            <field name="name">Cars</field>
+            <field name="res_model">model_car_store</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new Car
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_Car" name="Store"/>
+        <menuitem id="Car_store" name="Cars" parent="menu_Car"
+                  action="action_view_Cars"/>
+    </data>
+</odoo>
